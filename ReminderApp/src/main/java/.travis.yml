@@ -1,1 +1,7 @@
-language: Java
+language: java
+install: ./install-dependencies.sh
+jdk:
+  - oraclejdk8
+  - oraclejdk9
+  - openjdk7
+  
