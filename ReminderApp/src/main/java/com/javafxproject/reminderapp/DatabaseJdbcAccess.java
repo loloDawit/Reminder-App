@@ -68,6 +68,20 @@ class DatabaseJdbcAccess {
     }
     /**
      * 
+     * @param reminder newly created reminder 
+     */
+    public void addReminder(Reminder reminder){
+        jdbcTemplate.update(INSERT_REMINDER, 
+                reminder.getName(), 
+                reminder.getNotes(),
+                Date.valueOf(reminder.getDate()),
+                Time.valueOf(reminder.gettTime()), 
+                reminder.getPriority(), 
+                reminder.getCompleted()
+        );
+    }
+    /**
+     * 
      * @param reminderToBeDeleted 
      */
     public void deleteReminder(Reminder reminderToBeDeleted){
