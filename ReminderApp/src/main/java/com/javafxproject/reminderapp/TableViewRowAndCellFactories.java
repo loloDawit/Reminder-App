@@ -11,6 +11,7 @@ import java.time.format.DateTimeFormatter;
 import javafx.geometry.Pos;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableRow;
+import javafx.scene.control.Tooltip;
 
 /**
  *
@@ -61,7 +62,26 @@ public class TableViewRowAndCellFactories {
      * @return Table row with tooltip, reminder notes text upto 100 chars
      */
     public TableRow<Reminder> getTooltipTableRow(){
-        
+        TableRow<Reminder> row = new TableRow<Reminder>(){
+            @Override
+            protected void updateItem(Reminder reminder, boolean empty){
+                super.updateItem(reminder, empty);
+                if(empty){
+                    setTooltip(null);
+                }else{
+                    String notes = reminder.getNotes();
+                    if((notes == null) || (notes.isEmpty())){
+                        setTooltip(null);
+                    }else{
+                        notes = (notes.length() > 100) ?
+                                notes.substring(0, 100) + "...":
+                                notes;
+                        setTooltip(new Tooltip(notes));
+                    }
+                }
+            }
+        };
+        return row;
     }
     
 }
