@@ -10,6 +10,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import javafx.geometry.Pos;
 import javafx.scene.control.TableCell;
+import javafx.scene.control.TableRow;
 
 /**
  *
@@ -54,6 +55,13 @@ public class TableViewRowAndCellFactories {
         };
         cell.setAlignment(Pos.CENTER);
         return cell;
+    }
+    /**
+     * 
+     * @return Table row with tooltip, reminder notes text upto 100 chars
+     */
+    public TableRow<Reminder> getTooltipTableRow(){
+        
     }
     
 }
